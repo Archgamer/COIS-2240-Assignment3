@@ -11,9 +11,40 @@ public class RentalRecord {
     public RentalRecord(Vehicle vehicle, Customer customer,
                         LocalDate recordDate, double totalAmount,
                         String recordType) {
+        this.vehicle = vehicle;
+        this.customer = customer;
+        this.recordDate = recordDate;
+        this.totalAmount = totalAmount;
+        this.recordType = recordType;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public LocalDate getRecordDate() {
+        return recordDate;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public String getRecordType() {
+        return recordType;
     }
 
     public String toString() {
-        return "";
+        return String.format("%s: %s | Vehicle=%s | Customer=%s (%s) | Amount=%.2f",
+                recordType,
+                recordDate,
+                vehicle.getLicensePlate(),
+                customer.getCustomerId(),
+                customer.getName(),
+                totalAmount);
     }
 }
