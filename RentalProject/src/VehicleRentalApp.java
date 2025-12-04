@@ -42,7 +42,7 @@ public class VehicleRentalApp {
     }
 
     private static void addVehicle(RentalSystem system, Scanner input) {
-        System.out.println("Select vehicle type: 1. Car  2. Minibus  3. PickupTruck");
+        System.out.println("Select type: 1. Car  2. Minibus  3. PickupTruck");
         int type = input.nextInt();
         input.nextLine();
 
@@ -80,7 +80,13 @@ public class VehicleRentalApp {
 
         System.out.print("Enter license plate: ");
         String plate = input.nextLine();
-        vehicle.setLicensePlate(plate);
+
+        try {
+            vehicle.setLicensePlate(plate);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        }
 
         if (system.addVehicle(vehicle))
             System.out.println("Vehicle added.");
