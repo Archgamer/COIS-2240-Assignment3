@@ -50,7 +50,10 @@ public abstract class Vehicle {
 
     
     public void setLicensePlate(String plate) {
-        this.licensePlate = plate.toUpperCase();
+        if (!isValidPlate(plate)) {
+            throw new IllegalArgumentException("Invalid license plate: " + plate);
+        }
+        this.licensePlate = plate.trim().toUpperCase();
     }
 
     public String getLicensePlate() {
