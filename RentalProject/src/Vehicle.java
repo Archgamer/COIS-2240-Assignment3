@@ -36,6 +36,19 @@ public abstract class Vehicle {
         this("Unknown", "Unknown", 0);
     }
 
+    private boolean isValidPlate(String plate) {
+        if (plate == null) {
+            return false;
+        }
+        String trimmed = plate.trim();
+        if (trimmed.isEmpty()) {
+            return false;
+        }
+        String upper = trimmed.toUpperCase();
+        return upper.matches("^[A-Z]{3}\\d{3}$");
+    }
+
+    
     public void setLicensePlate(String plate) {
         this.licensePlate = plate.toUpperCase();
     }
