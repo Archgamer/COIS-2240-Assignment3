@@ -5,20 +5,36 @@ public class RentalHistory {
     private ArrayList<RentalRecord> rentalRecords;
 
     public RentalHistory() {
+        this.rentalRecords = new ArrayList<>();
     }
 
     public void addRecord(RentalRecord record) {
+        if (record != null) {
+            rentalRecords.add(record);
+        }
     }
 
     public ArrayList<RentalRecord> getRentalHistory() {
-        return null;
+        return rentalRecords;
     }
 
-    public ArrayList<RentalRecord> getRentalRecordsByCustomer(String customerName) {
-        return null;
+    public ArrayList<RentalRecord> getRentalRecordsByCustomer(String customerId) {
+        ArrayList<RentalRecord> result = new ArrayList<>();
+        for (RentalRecord record : rentalRecords) {
+            if (record.getCustomer().getCustomerId().equalsIgnoreCase(customerId)) {
+                result.add(record);
+            }
+        }
+        return result;
     }
 
     public ArrayList<RentalRecord> getRentalRecordsByVehicle(String licensePlate) {
-        return null;
+        ArrayList<RentalRecord> result = new ArrayList<>();
+        for (RentalRecord record : rentalRecords) {
+            if (record.getVehicle().getLicensePlate().equalsIgnoreCase(licensePlate)) {
+                result.add(record);
+            }
+        }
+        return result;
     }
 }
