@@ -3,7 +3,9 @@ public class Minibus extends Vehicle implements Rentable {
 
     public Minibus(String licensePlate, String make, String model, int year, boolean isAccessible) {
         super(make, model, year);
-        setLicensePlate(licensePlate);
+        if (licensePlate != null && !licensePlate.trim().isEmpty()) {
+            setLicensePlate(licensePlate);
+        }
         this.isAccessible = isAccessible;
     }
 

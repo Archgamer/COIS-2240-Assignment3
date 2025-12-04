@@ -56,13 +56,17 @@ public class RentalSystem {
     }
 
     public Vehicle findVehicleByPlate(String licensePlate) {
+        if (licensePlate == null) return null;
+        String target = licensePlate.trim();
         for (Vehicle v : vehicles) {
-            if (v.getLicensePlate().equalsIgnoreCase(licensePlate)) {
+            if (v.getLicensePlate() != null &&
+                v.getLicensePlate().trim().equalsIgnoreCase(target)) {
                 return v;
             }
         }
         return null;
     }
+
 
     public Customer findCustomerById(String customerId) {
         for (Customer c : customers) {

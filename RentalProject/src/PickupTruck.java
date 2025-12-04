@@ -6,7 +6,9 @@ public class PickupTruck extends Vehicle implements Rentable {
     public PickupTruck(String licensePlate, String make, String model, int year,
                        double cargoSize, boolean hasTrailer) {
         super(make, model, year);
-        setLicensePlate(licensePlate);
+        if (licensePlate != null && !licensePlate.trim().isEmpty()) {
+            setLicensePlate(licensePlate);
+        }
         this.cargoSize = cargoSize;
         this.hasTrailer = hasTrailer;
     }

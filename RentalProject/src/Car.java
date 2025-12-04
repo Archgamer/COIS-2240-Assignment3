@@ -3,9 +3,12 @@ public class Car extends Vehicle implements Rentable {
 
     public Car(String licensePlate, String make, String model, int year) {
         super(make, model, year);
-        setLicensePlate(licensePlate);
+        if (licensePlate != null && !licensePlate.trim().isEmpty()) {
+            setLicensePlate(licensePlate);
+        }
         this.numSeats = 4;
     }
+
 
     public int getNumSeats() {
         return numSeats;
