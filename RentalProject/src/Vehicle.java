@@ -5,7 +5,7 @@ public abstract class Vehicle {
     private String model;
     private int year;
     private Status status;
-    
+
     public enum Status {
         Available,
         Held,
@@ -15,8 +15,18 @@ public abstract class Vehicle {
     }
 
     public Vehicle(String make, String model, int year) {
-        this.make = (make);
-        this.model = (model);
+        if (make == null || make.isEmpty()) {
+            this.make = "Unknown";
+        } else {
+            this.make = capitalize(make);
+        }
+
+        if (model == null || model.isEmpty()) {
+            this.model = "Unknown";
+        } else {
+            this.model = capitalize(model);
+        }
+
         this.year = year;
         this.licensePlate = "";
         this.status = Status.Available;
@@ -54,6 +64,15 @@ public abstract class Vehicle {
         this.status = status;
     }
 
+    // Task 5: 提取公共大小写处理逻辑
+    private String capitalize(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        String lower = input.toLowerCase();
+        return Character.toUpperCase(lower.charAt(0)) + lower.substring(1);
+    }
+
     public String getInfo() {
         return String.format(
             "| %s\t| %s\t| %s\t| %d\t| %s\t|",
@@ -61,4 +80,3 @@ public abstract class Vehicle {
         );
     }
 }
-
